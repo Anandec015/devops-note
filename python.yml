@@ -1,0 +1,12 @@
+- hosts: appserver
+  remote_user: root
+  tasks:
+    - name: Installing Python3 in all client servers
+      apt: name=python3 state=present
+    
+    - name: Copy the Python script to execute in all the machines
+      copy: src=script.py dest=/hitechhari
+      
+    - name: Executing the script in all App servers
+      shell: cd /hitechhari; python3 script.py
+    
